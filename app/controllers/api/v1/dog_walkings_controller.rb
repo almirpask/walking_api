@@ -11,7 +11,7 @@ class Api::V1::DogWalkingsController < ApplicationController
   def show
     @dog_walking = DogWalking.find params[:id]
     
-    render json: @dog_walking
+    render json: @dog_walking, serializer: DogWalkingSerializerShow
   end
 
   def create
@@ -20,6 +20,28 @@ class Api::V1::DogWalkingsController < ApplicationController
       render json: @dog_walking
     else
      render json: 'error'
+    end
+  end
+
+  def start_walk
+    @dog_walking = DogWalking.find(params[:dog_walking_id])
+    if @dog_walking.start.nil?
+      if @dog_walking.update(start: Time.now)
+        render json: @dog_walking
+      else
+        render json: 'error'
+      end
+    end
+  end
+
+  def finish_walk
+    @dog_walking = DogWalking.find(params[:dog_walking_id])
+    if @dog_walking.finish.nil?
+      if @dog_walking.update(finish: Time.now)
+        render json: @dog_walking
+      else
+        render json: 'error'
+      end
     end
   end
 
