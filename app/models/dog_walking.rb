@@ -1,0 +1,2 @@
+class DogWalking < ApplicationRecord
+end
