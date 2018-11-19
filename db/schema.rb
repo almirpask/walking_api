@@ -13,7 +13,8 @@
 ActiveRecord::Schema.define(version: 2018_11_18_221545) do
 
   create_table "dog_walkings", force: :cascade do |t|
-    t.integer "status"
+    t.integer "status", default: 0
+    t.integer "pets"
     t.float "price"
     t.float "duration"
     t.float "latitude"
