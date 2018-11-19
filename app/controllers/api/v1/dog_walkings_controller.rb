@@ -10,8 +10,9 @@ class Api::V1::DogWalkingsController < ApplicationController
 
   def show
     @dog_walking = DogWalking.find params[:id]
-
     render json: @dog_walking, serializer: DogWalkingSerializerShow
+  rescue => e
+    render json: e.message, status: :unprocessable_entity
   end
 
   def create

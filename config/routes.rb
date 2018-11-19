@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   namespace :api do
     namespace :v1 do
-      resources :dog_walkings, :defaults => { :format => 'json' } do
+      resources :dog_walkings, only: [:index, :create, :show], :defaults => { :format => 'json' } do
         put :start_walk
         put :finish_walk
       end
