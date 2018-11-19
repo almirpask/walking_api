@@ -3,8 +3,8 @@ class Api::V1::DogWalkingsController < ApplicationController
   def index
     page_number = params[:page].try(:[], :number)
     page_size = params[:page].try(:[], :size)
-    @dog_walking = DogWalking.page(page_number).per(page_size)
 
+    @dog_walking = next_walks_filter(DogWalking.page(page_number).per(page_size))
     render json: @dog_walking
   end
 
@@ -20,7 +20,7 @@ class Api::V1::DogWalkingsController < ApplicationController
     if @dog_walking.save
       render json: @dog_walking
     else
-     render json: 'error'
+      render json: 'error'
     end
   end
 
@@ -48,6 +48,14 @@ class Api::V1::DogWalkingsController < ApplicationController
 
   private
 
+  def next_walks_filter(scope)
+    if params[:next_walks]
+      scope.next_walks
+    else
+      scope
+    end
+  end
+
   def walk_price
     if @dog_walking.duration == 60
       @dog_walking.price = ((@dog_walking.pets - 1) * 20) + 35
@@ -64,7 +72,8 @@ class Api::V1::DogWalkingsController < ApplicationController
       :longitude,
       :start,
       :finish,
-      :pets
+      :pets,
+      :scheduled_day
     )
   end
 end

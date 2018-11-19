@@ -9,6 +9,7 @@ class CreateDogWalkings < ActiveRecord::Migration[5.2]
       t.float :longitude
       t.time :start
       t.time :finish
+      t.datetime :scheduled_day
 
       t.timestamps
     end
