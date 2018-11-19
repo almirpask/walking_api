@@ -6,8 +6,8 @@ class CreateDogWalkings < ActiveRecord::Migration[5.2]
       t.float :duration
       t.float :latitude
       t.float :longitude
-      t.datetime :start
-      t.datetime :finish
+      t.time :start
+      t.time :finish
 
       t.timestamps
     end

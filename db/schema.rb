@@ -18,8 +18,8 @@ ActiveRecord::Schema.define(version: 2018_11_18_221545) do
     t.float "duration"
     t.float "latitude"
     t.float "longitude"
-    t.datetime "start"
-    t.datetime "finish"
+    t.time "start"
+    t.time "finish"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
