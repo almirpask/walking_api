@@ -13,7 +13,7 @@ Returns all pending or ongoing records in the next few days
 
     POST /api/v1/dog_walkings
 
-Creates a new dog walking
+Create a new dog walking
 
     PUT /api/v1/dog_walkings/:dog_walking_id/start_walk
 
