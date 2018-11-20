@@ -16,7 +16,7 @@ ActiveRecord::Schema.define(version: 2018_11_18_221545) do
     t.integer "status", default: 0
     t.integer "pets"
     t.float "price"
-    t.float "duration"
+    t.integer "duration"
     t.float "latitude"
     t.float "longitude"
     t.time "start"

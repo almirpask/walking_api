@@ -5,12 +5,12 @@ class Api::V1::DogWalkingsController < ApplicationController
     page_size = params[:page].try(:[], :size)
 
     @dog_walking = next_walks_filter(DogWalking.page(page_number).per(page_size))
-    render json: @dog_walking
+    render json: @dog_walking, status: :ok
   end
 
   def show
     @dog_walking = DogWalking.find params[:id]
-    render json: @dog_walking, serializer: DogWalkingSerializerShow
+    render json: @dog_walking, serializer: DogWalkingSerializerShow, status: :ok
   rescue => e
     render json: e.message, status: :unprocessable_entity
   end
@@ -19,9 +19,9 @@ class Api::V1::DogWalkingsController < ApplicationController
     @dog_walking = DogWalking.new dog_walking_params
     walk_price
     if @dog_walking.save
-      render json: @dog_walking
+      render json: @dog_walking, status: :created
     else
-      render json: 'error'
+      render json: @dog_walking.errors, status: :unprocessable_entity
     end
   end
 
@@ -31,7 +31,7 @@ class Api::V1::DogWalkingsController < ApplicationController
       if @dog_walking.update(start: Time.now, status: :in_progress)
         render json: @dog_walking
       else
-        render json: 'error'
+        render json: @dog_walking.errors, status: :unprocessable_entity
       end
     end
   end
@@ -42,8 +42,10 @@ class Api::V1::DogWalkingsController < ApplicationController
       if @dog_walking.update(finish: Time.now, status: :finished)
         render json: @dog_walking
       else
-        render json: 'error'
+        render json: @dog_walking.errors, status: :unprocessable_entity
       end
+    else 
+      render json: 'no_content', status: :no_content
     end
   end
 
