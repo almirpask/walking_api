@@ -1,24 +1,41 @@
-# README
+# Dog Walking API
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+endpoints:
 
-Things you may want to cover:
+    GET /api/v1/dog_walkings
 
-* Ruby version
+Returns all dog_walkings
 
-* System dependencies
+    GET /api/v1/dog_walkings?next_walks=true
 
-* Configuration
+Returns all pending or ongoing records in the next few days
 
-* Database creation
 
-* Database initialization
+    POST /api/v1/dog_walkings
 
-* How to run the test suite
+Creates a new dog walking
 
-* Services (job queues, cache servers, search engines, etc.)
+    PUT /api/v1/dog_walkings/:dog_walking_id/start_walk
 
-* Deployment instructions
+To start a new walk
 
-* ...
+    PUT /api/v1/dog_walkings/:dog_walking_id/finish_walk
+
+To finish a started walk
+
+    GET /api/v1/dog_walkings/:id
+
+To see the total time taken up to the moment
+
+# Runing
+
+To run this project you need:
+
+* `rails 5.2.1`
+* `ruby 2.5.1`
+
+After clone the project open a terminal on the project root forlder and run:
+
+* `bundle install`
+* `rails db:create`
+* `rails db:migrate`
