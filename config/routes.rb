@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  root to: 'home#index'
   namespace :api do
     namespace :v1 do
       resources :dog_walkings, only: [:index, :create, :show], :defaults => { :format => 'json' } do

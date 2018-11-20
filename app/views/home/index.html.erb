@@ -1,0 +1,42 @@
+<section class="jumbotron text-center">
+  <div class="container">
+    <h1 class="jumbotron-heading">Dog Walking API</h1>
+  </div>
+</section>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">Method</th>
+      <th scope="col">Path</th>
+      <th scope="col">Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>GET </td>
+      <td>/api/v1/dog_walkings</td>
+      <td>Returns all dog_walkings</td>
+    </tr>
+    <tr>
+      <td>GET</td>
+      <td>/api/v1/dog_walkings?next_walks=true</td>
+      <td>Returns all pending or ongoing records in the next few days</td>
+    </tr>
+    <tr>
+      <td>POST</td>
+      <td>/api/v1/dog_walkings</td>
+      <td>Create a new dog walking</td>
+    </tr>
+    <tr>
+      <td>PUT</td>
+      <td>/api/v1/dog_walkings/:dog_walking_id/start_walk</td>
+      <td>To start a new walk</td>
+    </tr>
+    <tr>
+      <td>PUT</td>
+      <td>/api/v1/dog_walkings/:dog_walking_id/finish_walk</td>
+      <td>To see the total time taken up to the moment</td>
+    </tr>
+  </tbody>
+</table>
