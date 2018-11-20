@@ -39,3 +39,7 @@ After clone the project open a terminal on the project root forlder and run:
 * `bundle install`
 * `rails db:create`
 * `rails db:migrate`
+
+# Runing Tests
+
+To run the tests execute the following command: `bin/rspec`
